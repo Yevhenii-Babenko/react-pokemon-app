@@ -1,40 +1,64 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPokemons,  getPokemonById } from '../../redux/actions/actions';
-import { allPokemons, onePokemon } from '../../redux/selectors/selectors';
+import { allPokemons } from '../../redux/selectors/selectors';
+import {Heart} from '../../components/images/'
+/* import PokemonTeamplate from '../../components/pokemon-teamplate'; */
+
+import './pokemon-page.css'
 /* import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid'; */
-
+const pokeStyle = {
+  card: {
+    width: '320px',
+    height: '300px',
+    boxSizing: 'border-box',
+    borderRadius: '8px',
+    /* justifyContent: 'space-around', */
+  },
+  imgContainer: {
+    background: '#F2F2F2',
+  },
+  name: {
+    fontSize: '16px',
+    color: 'red'
+  },
+  image: {
+    width: '75%',
+    objectFit: 'contain'
+  },
+  heartHolder: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0 10px'
+  }
+}
 function PokemonPage() {
   const getPokemons = useSelector(allPokemons);
-  const selectedPokemon = useSelector(onePokemon);
+  /* const selectedPokemon = useSelector(onePokemon); */
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(getAllPokemons());
     dispatch(getPokemonById(1))
   }, [dispatch])
     return (
-        <div>
-            <h1>Pokemon page</h1>
-            {console.log('pokemons', getPokemons)}
-            {console.log('selectedPokemon', selectedPokemon)}
-            <div>
-              {getPokemons.length ? getPokemons.map((pokemon, index) => {
+            <div className="container wrapper">
+              {getPokemons.length !== 0 && getPokemons.map((pokemon, index) => {
                 return(
-                  <>
-                    <div key={index}> {pokemon.name} </div>
-                    <a href={pokemon.url}> Pokemon account </a>
-                  </>
+                  <div style={pokeStyle.card} key={index}>
+                    <div style={pokeStyle.imgContainer}>
+                      <img style={pokeStyle.image} src={pokemon.sprites.other['official-artwork'].front_default} alt="Pokemon image" />
+                    </div>
+                    <div style={pokeStyle.heartHolder}>
+                      <h3 style={pokeStyle.name}> {pokemon.name}</h3>
+                      <img src={Heart} alt="heart_default" />
+                    </div>
+                  </div>
                 )
-                }): null}
-                {selectedPokemon.length ? selectedPokemon.map((png) => {
-                  return (
-                    <img src={png} alt="front_default" />
-                    )
-                  }) : null }
+              })}
             </div>
-        </div>
     )
 }
 

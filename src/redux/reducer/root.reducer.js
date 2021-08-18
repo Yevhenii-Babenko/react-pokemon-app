@@ -10,7 +10,7 @@ export const rootReducer = (state = initialState, action) => {
         case 'GET_ALL_POKEMONS': {
             return {
                 ...state,
-                pokemons: action.payload
+                pokemons: [...state.pokemons, action.payload]
             }
         }
         case 'ADD_POKEMON_TO_FAVORITES': {
