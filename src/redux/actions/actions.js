@@ -1,5 +1,5 @@
 /* import { pokemosApi } from '../../api/axiosApi' */
-const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=15&offset=15';
+const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=15';
 
 export const getAllPokemons = () => (dispatch) => {
     fetch(baseUrl)
@@ -17,6 +17,19 @@ export const getAllPokemons = () => (dispatch) => {
                     })
                 });
         });
+    };
+
+export const fetchPokeDataById = (id) => (dispatch) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then(responce => responce.json())
+        .then(singlePokeData => {
+            dispatch({
+                type: 'GET_SINGLE_POKEMON_BY_ID',
+                payload: singlePokeData,
+            })
+        }
+        )}
+        
 
     /* pokemosApi.getAllPokemons()
         .then((responce) => {
@@ -30,7 +43,7 @@ export const getAllPokemons = () => (dispatch) => {
                 payload: error
                 })
         }) */
-}
+
 
 export const getPokemonById = (id) => (dispatch) => {
     /* pokemosApi.getSinglePokemon(id)
