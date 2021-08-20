@@ -22,7 +22,7 @@ const headerStyke = {
 function Dashboard() {
     return (
         <header style={headerStyke.header}>
-            <img style={headerStyke.logoImg} src={Logo} alt="Logo image" />
+            <img style={headerStyke.logoImg} src={Logo} alt="Logo" />
         </header>
     )
 }

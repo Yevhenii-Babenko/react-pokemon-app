@@ -42,7 +42,7 @@ const pokeStyle = {
 };
 function PokemonPage() {
   const getPokemons = useSelector(allPokemons);
-  const history = useHistory();
+  /* const history = useHistory(); */
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPokemons());
