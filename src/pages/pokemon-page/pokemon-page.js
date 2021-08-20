@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPokemons } from '../../redux/actions/actions';
 import { allPokemons } from '../../redux/selectors/selectors';
 import { Heart } from '../../components/images/';
-import {
+/* import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link
-} from 'react-router-dom';
+} from 'react-router-dom'; */
 
 /* import PokemonProfile from '../pokemon-profile/pokemon-profile'; */
 import './pokemon-page.css'
@@ -42,12 +45,11 @@ function PokemonPage() {
     dispatch(getAllPokemons());
   }, [dispatch])
   return (
-    
     <div className="container wrapper">
       {getPokemons.length !== 0 && getPokemons.map((pokemon, index) => {
         return (
             <div className="wrapper__item" style={pokeStyle.card} key={index}>
-            <Link to={`/pokemon-profile/${pokemon.id}`}>
+            {/* <Link to={`/pokemon-profile/${pokemon.id}`}> */}
               <div style={pokeStyle.imgContainer}>
                   <img style={pokeStyle.image} src={pokemon.sprites.other['official-artwork'].front_default} alt="Pokemon image" />
               </div>
@@ -55,11 +57,18 @@ function PokemonPage() {
                 <h3 style={pokeStyle.name}> {pokemon.name}</h3>
                 <img src={Heart} alt="heart_default" />
               </div>
-              </Link>
             </div>)
         })}  
       </div>
   )
 }
 
+/* export function NoMatch() {
+  return(
+    <div>
+      <p>Page not found</p>
+    </div>
+  )
+}
+ */
 export default PokemonPage;

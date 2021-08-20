@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onePokemon } from '../../redux/selectors/selectors';
 import { fetchPokeDataById } from '../../redux/actions/actions';
 import Dashboard from '../../components/dashboard';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-  } from 'react-router-dom';
+import { NoMatch } from '../pokemon-page/pokemon-page'
 
 function PokemonProfile() {
     let paramid = useParams();
@@ -21,13 +17,6 @@ function PokemonProfile() {
 
     return (
         <div>
-        <Router>
-            <Switch>
-                <Route path="/pokemon-profile/:id" >
-                    <PokemonProfile />
-                </Route>
-            </Switch>
-        </Router>
             <Dashboard />
             {singlePoke.lenght !== 0 && singlePoke.map(pokeData => {
                 return (
