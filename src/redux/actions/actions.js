@@ -1,8 +1,9 @@
 /* import { pokemosApi } from '../../api/axiosApi' */
+
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=15';
 
 export const getAllPokemons = () => (dispatch) => {
-    fetch(baseUrl)
+    return fetch(baseUrl)
         .then(responce => responce.json())
         .then((pokemons) => {
             pokemons.results.forEach((pokemon) => {
@@ -20,7 +21,7 @@ export const getAllPokemons = () => (dispatch) => {
     };
 
 export const fetchPokeDataById = (id) => (dispatch) => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         .then(responce => responce.json())
         .then(singlePokeData => {
             dispatch({
