@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons } from "../../redux/actions/actions";
-import { allPokemons } from "../../redux/selectors/selectors";
-import { Heart } from "../../components/images/";
+import { allPokemons, favorPokemon } from "../../redux/selectors/selectors";
+import { Heart, HeartFilled } from "../../components/images/";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 /* import {
@@ -42,6 +42,7 @@ const pokeStyle = {
 };
 function PokemonPage() {
   const getPokemons = useSelector(allPokemons);
+  const favoritePokemon = useSelector(favorPokemon);
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -84,8 +85,16 @@ function PokemonPage() {
                   />
                 </div>
                 <div style={pokeStyle.heartHolder}>
-                  <h3 style={pokeStyle.name}> {pokemon.name}</h3>
-                  <img src={Heart} alt="heart_default" />
+                  <h3 style={pokeStyle.heartHolder}> {pokemon.name}</h3>
+                  <img
+                    src={
+                      favoritePokemon.length &&
+                      favoritePokemon.some((item) => item.name === pokemon.name)
+                        ? HeartFilled
+                        : Heart
+                    }
+                    alt="heart_default"
+                  />
                 </div>
               </div>
             </Link>
