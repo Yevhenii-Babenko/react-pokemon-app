@@ -1,7 +1,6 @@
 const initialState = {
   pokemons: [],
   favorPokemons: [],
-  singlePokemon: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -17,12 +16,6 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         // favorPokemons: [...state.favorPokemons, action.payload]
         favorPokemons: action.payload,
-      };
-    }
-    case "GET_SINGLE_POKEMON_BY_ID": {
-      return {
-        ...state,
-        singlePokemon: [...state.singlePokemon, action.payload],
       };
     }
     default:

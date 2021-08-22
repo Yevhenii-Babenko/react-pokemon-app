@@ -1,5 +1,5 @@
 /* import { pokemosApi } from '../../api/axiosApi' */
-const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=15";
+const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=16";
 
 export const getAllPokemons = () => (dispatch) => {
   fetch(baseUrl)
@@ -28,29 +28,6 @@ export const fetchPokeDataById = (id) => (dispatch) => {
         payload: singlePokeData,
       });
     });
-};
-
-/* pokemosApi.getAllPokemons()
-        .then((responce) => {
-            dispatch({
-                type: 'GET_ALL_POKEMONS',
-                payload: responce.data.results,
-            })
-        }).catch((error) => {
-            dispatch({
-                type: 'GET_ALL_POKEMONS',
-                payload: error
-                })
-        }) */
-
-export const getPokemonById = (id) => (dispatch) => {
-  /* pokemosApi.getSinglePokemon(id)
-        .then((responce) => {
-            dispatch({
-                type: 'GET_SINGLE_POKEMON_BY_ID',
-                payload: responce.data.sprites.other['official-artwork'].front_default
-            })
-        }) */
 };
 
 export const handleFavorites = (favorites) => {

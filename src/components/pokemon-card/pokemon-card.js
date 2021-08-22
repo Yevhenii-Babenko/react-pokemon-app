@@ -1,5 +1,32 @@
+import { Heart, HeartFilled } from "../../components/images";
 
-function PokemonCard() {
+function PokemonCard({ name, image, pokemonInfoObj }) {
+   // console.log('name', name.slice(0,1).toUpperCase() + name.slice(1) )
+    const pokeStyle = {
+        card: {
+          width: "320px",
+          height: "300px",
+          boxSizing: "border-box",
+          borderRadius: "8px",
+        },
+        imgContainer: {
+          background: "#F2F2F2",
+        },
+        name: {
+          fontSize: "16px",
+          color: "red",
+        },
+        image: {
+          width: "75%",
+          objectFit: "contain",
+        },
+        heartHolder: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 10px",
+        },
+      };
     return (
         <div
             className="wrapper__item"
@@ -9,7 +36,7 @@ function PokemonCard() {
                 <img
                     style={pokeStyle.image}
                     src={
-                    pokemon.sprites.other["official-artwork"].front_default
+                        image
                     }
                     alt="Pokemon"
                 />
@@ -19,19 +46,19 @@ function PokemonCard() {
                     <h3 
                         style={pokeStyle.heartHolder}
                     > 
-                        {pokemon.name}
+                        {name.slice(0,1).toUpperCase() + name.slice(1)}
                     </h3>
                   <img
                     src={
-                      favoritePokemon.length &&
-                      favoritePokemon.some((item) => item.name === pokemon.name)
+                      pokemonInfoObj.length &&
+                      pokemonInfoObj.some((item) => item.name === name)
                         ? HeartFilled
                         : Heart
                     }
                     alt="heart_default"
-                  />
+                  /> 
                 </div>
-              </div>
+        </div>
     )
 }
 

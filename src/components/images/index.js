@@ -3,5 +3,6 @@ import HeartFilled from "../../components/images/heart_filled.png";
 import Logo from "../../components/images/logo.png";
 import HeartUnfilled from "../../components/images/heart_unfilled.png";
 import ArrowBack from "../../components/images/arrow_back.png";
+import HeartDefaultWhite from '../../components/images/heart_default-white.png';
 
-export { Heart, HeartFilled, Logo, HeartUnfilled, ArrowBack };
+export { Heart, HeartFilled, Logo, HeartUnfilled, ArrowBack, HeartDefaultWhite };

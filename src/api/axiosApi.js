@@ -7,6 +7,5 @@ const apiConnect = axios.create({
 });
 
 export const pokemosApi = {
-    getAllPokemons: () => apiConnect.get('/pokemon?limit=15&offset=15'),
-    getSinglePokemon: (id) => apiConnect.get(`/pokemon/${id}`),
+    getAllPokemons: () => apiConnect.get('/pokemon?limit=16')
 }

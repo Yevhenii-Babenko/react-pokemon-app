@@ -1,22 +1,14 @@
-// import { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { favorPokemon } from "../../redux/selectors/selectors";
-import {
-  handleFavorites,
-} from "../../redux/actions/actions";
+import { handleFavorites } from "../../redux/actions/actions";
 import { useLocation } from "react-router-dom";
-
-// useEffect(() => {
-//     dispatch(changePath('/pokemon'))
-// })
+import { HeartDefaultWhite } from '../../components/images'
 
 function PokemonProfile() {
   const dispatch = useDispatch();
-  //   const singlePoke = useSelector(onePokemon);
   const location = useLocation();
   const favoritePokemon = useSelector(favorPokemon);
-  console.log("favorite", favoritePokemon);
-  console.log("location", location.state);
   const pokeData = location.state.pokemon;
 
   const handleClickAddToFavorite = () => {
@@ -64,11 +56,20 @@ function PokemonProfile() {
       >
         {favoritePokemon.length &&
         favoritePokemon.some((item) => item.name === pokeData.name)
-          ? "Remove from favorites"
-          : "Add to favorites"}
+          ? 'Remove from favorites'
+          : <AddToFavorites />}
       </button>
     </div>
   );
+}
+
+const AddToFavorites = () => {
+  return(
+    <span>
+      <img src={HeartDefaultWhite} alt="Heart default white" />
+        Add to Favorites
+    </span>
+  )
 }
 
 export default PokemonProfile;
