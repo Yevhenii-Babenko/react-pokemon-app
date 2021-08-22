@@ -1,8 +1,7 @@
-`Aimport { useEffect } from "react";
+// import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { onePokemon, favorPokemon } from "../../redux/selectors/selectors";
+import { favorPokemon } from "../../redux/selectors/selectors";
 import {
-  fetchPokeDataById,
   handleFavorites,
 } from "../../redux/actions/actions";
 import { useLocation } from "react-router-dom";
@@ -12,7 +11,7 @@ import { useLocation } from "react-router-dom";
 // })
 
 function PokemonProfile() {
-  let paramid = useParams();
+  // let paramid = useParams();
   const dispatch = useDispatch();
   //   const singlePoke = useSelector(onePokemon);
   const location = useLocation();
