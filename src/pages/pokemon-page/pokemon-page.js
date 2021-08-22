@@ -42,12 +42,8 @@ const pokeStyle = {
 };
 function PokemonPage() {
   const getPokemons = useSelector(allPokemons);
-<<<<<<< HEAD
-  /* const history = useHistory(); */
-=======
   const favoritePokemon = useSelector(favorPokemon);
   const history = useHistory();
->>>>>>> 76d7bca157f4288673122235bd47cfd2c6b5b963
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPokemons());

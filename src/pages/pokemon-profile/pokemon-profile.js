@@ -1,14 +1,10 @@
 `Aimport { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
-import { onePokemon } from "../../redux/selectors/selectors";
-=======
 import { onePokemon, favorPokemon } from "../../redux/selectors/selectors";
 import {
   fetchPokeDataById,
   handleFavorites,
 } from "../../redux/actions/actions";
->>>>>>> 76d7bca157f4288673122235bd47cfd2c6b5b963
 import { useLocation } from "react-router-dom";
 
 // useEffect(() => {
@@ -16,36 +12,6 @@ import { useLocation } from "react-router-dom";
 // })
 
 function PokemonProfile() {
-<<<<<<< HEAD
-  // const singlePoke = useSelector(onePokemon);
-  const location = useLocation();
-  const currentPokemon = location.state.pokemon;
-  console.log(currentPokemon)
-  useEffect(() => {
-  }, []);
-
-  return (
-    <div  className="poke-card">
-        <div className="poke-card__img-bg">
-            <img 
-                src={currentPokemon.sprites.other['official-artwork'].front_default}
-                alt="Pokemon"
-            />
-            <h2>{currentPokemon.name.slice(0,1).toUpperCase() + currentPokemon.name.slice(1)}</h2>
-        </div>
-        {/* <p>Base Experience {currentPokemon.base_experience}</p>
-        <p> {currentPokemon.height}</p>
-        <p> {currentPokemon.weight}</p>
-        <p>
-            {currentPokemon.types.map((poketype, index) => {
-            return <span key={index}>{poketype.type.name}</span>;
-            })}
-        </p>
-        <p>
-            {currentPokemon.abilities.map((pokeAbility, index) => {
-            return <span key={index}>{pokeAbility.ability.name}</span>;})}
-              </p> */}
-=======
   let paramid = useParams();
   const dispatch = useDispatch();
   //   const singlePoke = useSelector(onePokemon);
@@ -109,7 +75,6 @@ function PokemonProfile() {
           ? "Remove from favorites"
           : "Add to favorites"}
       </button>
->>>>>>> 76d7bca157f4288673122235bd47cfd2c6b5b963
     </div>
   );
   //         })}
