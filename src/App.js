@@ -5,6 +5,7 @@ import Dashboard from "./components/dashboard";
 import { useDispatch } from "react-redux";
 import { handleFavorites } from "./redux/actions/actions";
 import PokemonProfile from "./pages/pokemon-profile/pokemon-profile";
+import FavoritesPage from "./pages/favorites-page";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
       <div className="App">
         <Dashboard />
         <Switch>
+          <Route path="/favor_list/">
+            <FavoritesPage />
+          </Route>
           <Route path="/pokemon">
             <PokemonProfile />
           </Route>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Logo, HeartUnfilled, ArrowBack } from '../../components/images/'
+ import { Link } from 'react-router-dom';
+import { Logo, HeartUnfilled, ArrowBack } from '../../components/images/';
 
 const headerStyke = {
     header: {
@@ -24,11 +25,28 @@ const headerStyke = {
 }
 
 function Dashboard() {
+   
     return (
         <header style={headerStyke.header}>
-            <img style={headerStyke.arrowBack} src={ArrowBack} alt="Arrow back" />
-            <img style={headerStyke.logoImg} src={Logo} alt="Logo" />
-            <img style={headerStyke.favorHeart} src={HeartUnfilled} alt="Heart" />
+            <Link to="/" >
+                <img 
+                    style={headerStyke.arrowBack} 
+                    src={ArrowBack} 
+                    alt="Arrow back" 
+                />
+            </Link>
+            <img 
+                style={headerStyke.logoImg} 
+                src={Logo} 
+                alt="Logo" 
+            />
+            <Link to="/favor_list/" >
+                <img 
+                    style={headerStyke.favorHeart}
+                    src={HeartUnfilled} 
+                    alt="Heart"
+                />
+            </Link>
         </header>
     )
 }

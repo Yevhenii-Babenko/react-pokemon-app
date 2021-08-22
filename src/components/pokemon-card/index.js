@@ -1,0 +1,1 @@
+import PokemonCard from './pokemon-card'

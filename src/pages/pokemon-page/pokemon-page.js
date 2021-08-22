@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons } from "../../redux/actions/actions";
 import { allPokemons, favorPokemon } from "../../redux/selectors/selectors";
 import { Heart, HeartFilled } from "../../components/images/";
-// import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./pokemon-page.css";
 
@@ -35,7 +34,6 @@ const pokeStyle = {
 function PokemonPage() {
   const getPokemons = useSelector(allPokemons);
   const favoritePokemon = useSelector(favorPokemon);
-  // const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPokemons());
@@ -58,14 +56,6 @@ function PokemonPage() {
               <div
                 className="wrapper__item"
                 style={pokeStyle.card}
-                // onClick={() =>
-                //   history.push({
-                //     pathname: "/pokemon",
-                //     state: {
-                //       pokemon: pokemon,
-                //     },
-                //   })
-                // }
               >
                 <div style={pokeStyle.imgContainer}>
                   <img

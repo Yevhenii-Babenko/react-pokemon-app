@@ -11,7 +11,6 @@ import { useLocation } from "react-router-dom";
 // })
 
 function PokemonProfile() {
-  // let paramid = useParams();
   const dispatch = useDispatch();
   //   const singlePoke = useSelector(onePokemon);
   const location = useLocation();
@@ -35,10 +34,6 @@ function PokemonProfile() {
     }
   };
   return (
-    // <div>  {/* <Dashboard /> */}
-    //   {singlePoke.lenght !== 0 &&
-    //     singlePoke.map((pokeData) => {
-    //       return (
     <div key={pokeData.id}>
       <img
         src={pokeData.sprites.other.dream_world.front_default}
@@ -49,13 +44,11 @@ function PokemonProfile() {
       <p> {pokeData.height}</p>
       <p> {pokeData.weight}</p>
       <p>
-        {" "}
         {pokeData.types.map((poketype, index) => {
           return <span key={index}>{poketype.type.name}</span>;
         })}
       </p>
       <p>
-        {" "}
         {pokeData.abilities.map((pokeAbility, index) => {
           return <span key={index}>{pokeAbility.ability.name}</span>;
         })}
@@ -76,9 +69,6 @@ function PokemonProfile() {
       </button>
     </div>
   );
-  //         })}
-  //     </div>
-  //   );
 }
 
 export default PokemonProfile;
