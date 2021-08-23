@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { favorPokemon } from "../../redux/selectors/selectors";
 import { handleFavorites } from "../../redux/actions/actions";
 import { useLocation } from "react-router-dom";
-import { HeartDefaultWhite } from '../../components/images'
+import { HeartDefaultWhite } from '../../components/images';
+import './pokemon-profile.css'
 
 function PokemonProfile() {
   const dispatch = useDispatch();
@@ -26,47 +27,92 @@ function PokemonProfile() {
     }
   };
   return (
-    <div key={pokeData.id}>
-      <img
-        src={pokeData.sprites.other.dream_world.front_default}
-        alt="Pokemon img"
-      />
-      <h2>{pokeData.name}</h2>
-      <p>Base Experience {pokeData.base_experience}</p>
-      <p> {pokeData.height}</p>
-      <p> {pokeData.weight}</p>
-      <p>
-        {pokeData.types.map((poketype, index) => {
-          return <span key={index}>{poketype.type.name}</span>;
-        })}
-      </p>
-      <p>
-        {pokeData.abilities.map((pokeAbility, index) => {
-          return <span key={index}>{pokeAbility.ability.name}</span>;
-        })}
-      </p>
-      <button
-        onClick={handleClickAddToFavorite}
-        type="button"
-        style={{
-          padding: "20px 40px",
-          border: "1px solid green",
-          cursor: "pointer",
-        }}
-      >
-        {favoritePokemon.length &&
-        favoritePokemon.some((item) => item.name === pokeData.name)
-          ? 'Remove from favorites'
-          : <AddToFavorites />}
-      </button>
+    <div key={pokeData.id} className="profile">
+      <div className="img__container img__bg">
+        <img
+          className="img__style"
+          src={pokeData.sprites.other.dream_world.front_default}
+          alt="Pokemon img"
+        />
+        <h2 
+          className="profile__name"
+        >
+          {pokeData.name.slice(0,1).toUpperCase() + pokeData.name.slice(1)}
+        </h2>
+      </div>
+      <div className="profile-info">
+        <div className="profile-info__items">
+          <p className="profile-info__name"> Base Experience </p>
+          <p className="profile-info__values"> {`${pokeData.base_experience} XP`} </p>
+        </div>
+        <div className="profile-info__items">
+          <p className="profile-info__name"> Height </p>
+          <p className="profile-info__values"> {`${pokeData.height} m`}</p>
+        </div>
+        <div className="profile-info__items">
+          <p className="profile-info__name"> Weight </p>
+          <p className="profile-info__values"> {`${pokeData.weight} kg`}</p>
+        </div>
+        <div className="profile-info__items">
+          <p className="profile-info__name"> Types </p>
+          <p className="profile-info__values">
+            {pokeData.types.map((poketype, index) => <span className="profile-info__discription" key={index}>{poketype.type.name}</span> )}
+          </p>
+        </div>
+        <div className="profile-info__items">
+          <p className="profile-info__name"> Abilities </p>
+          <p className="profile-info__values">
+            {pokeData.abilities.map((pokeAbility, index) =>  <span className="profile-info__discription" key={index}>{pokeAbility.ability.name}</span>) }
+          </p>
+        </div>
+      </div>
+      <div className="btn-container">
+        <button
+          style={ 
+              favoritePokemon.some((item) => item.name === pokeData.name) ?
+              {
+                background: "#fff",
+                border: "2px solid #7EB57E",
+                color: '#7EB57E',
+                cursor: "pointer",
+                padding: "25px 40px",
+                fontWeight: 700,
+                fontSize: '20px',
+                lineHeight: '20px',
+              }:
+              {
+                background: '#7EB57E',
+                cursor: "pointer",
+                padding: "20px 40px"
+              }   
+          }
+          className="profile-btn"
+          onClick={handleClickAddToFavorite}
+          type="button"
+        >
+          {favoritePokemon.length &&
+          favoritePokemon.some((item) => item.name === pokeData.name)
+            ? 'Remove from favorites'
+            : <AddToFavorites 
+              className="profile-btn__img" 
+              innerStyle="style_text_add_favor" 
+              flexStyle="d-flex-span-btn"
+            />}
+        </button>
+      </div>
     </div>
   );
 }
 
-const AddToFavorites = () => {
+const AddToFavorites = (props) => {
+  console.log('porops', props)
   return(
-    <span>
-      <img src={HeartDefaultWhite} alt="Heart default white" />
+    <span className={`${props.innerStyle} ${props.flexStyle}`}>
+      <img 
+        className={props.className}
+        src={HeartDefaultWhite} 
+        alt="Heart default white"
+      />
         Add to Favorites
     </span>
   )

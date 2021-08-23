@@ -11,15 +11,22 @@ function FavoritesPage() {
             { favorArrayToDisplay.length > 0 ? 
                 favorArrayToDisplay.map((pokemon, index) => {
                     return(
-                        <Link to={{
-                            pathname: "/pokemon",
-                            state: {
-                                pokemon: pokemon,
-                            },
-                        }} >
+                        <Link 
+                            style={{
+                                textDecoration: 'none',
+                                color: '#201D2A',
+                                fontWeight: 500,
+                            }}
+                            to={{
+                                pathname: "/pokemon",
+                                state: {
+                                    pokemon: pokemon,
+                                },
+                            }} 
+                            key={index}
+                        >
                             <PokemonCard
                                 className="poke-card"
-                                key={index}
                                 name={pokemon.name}
                                 image={pokemon.sprites.other["official-artwork"].front_default}
                                 pokemonInfoObj={favorArrayToDisplay}

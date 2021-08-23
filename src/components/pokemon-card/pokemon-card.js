@@ -1,4 +1,5 @@
 import { Heart, HeartFilled } from "../../components/images";
+import './pokemon-card.css'
 
 function PokemonCard({ name, image, pokemonInfoObj }) {
    // console.log('name', name.slice(0,1).toUpperCase() + name.slice(1) )
@@ -12,10 +13,6 @@ function PokemonCard({ name, image, pokemonInfoObj }) {
         imgContainer: {
           background: "#F2F2F2",
         },
-        name: {
-          fontSize: "16px",
-          color: "red",
-        },
         image: {
           width: "75%",
           objectFit: "contain",
@@ -23,13 +20,20 @@ function PokemonCard({ name, image, pokemonInfoObj }) {
         heartHolder: {
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 10px",
+          justifyContent: "space-around",
+          /* padding: "0 10px", */
         },
+        heartIcon: {
+          width: '9%',
+        },
+        textStyle: {
+          fontSize: '1.2rem',
+          lineHeight: '20px',
+        }
       };
     return (
         <div
-            className="wrapper__item"
+            className="wrapper__item card"
             style={pokeStyle.card}
         >
             <div style={pokeStyle.imgContainer}>
@@ -43,12 +47,13 @@ function PokemonCard({ name, image, pokemonInfoObj }) {
             </div>
                 <div 
                     style={pokeStyle.heartHolder}>
-                    <h3 
-                        style={pokeStyle.heartHolder}
+                    <h3
+                      style={pokeStyle.textStyle}
                     > 
-                        {name.slice(0,1).toUpperCase() + name.slice(1)}
+                      {name.slice(0,1).toUpperCase() + name.slice(1)}
                     </h3>
                   <img
+                    style={pokeStyle.heartIcon}
                     src={
                       pokemonInfoObj.length &&
                       pokemonInfoObj.some((item) => item.name === name)

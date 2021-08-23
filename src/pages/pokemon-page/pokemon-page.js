@@ -20,6 +20,11 @@ function PokemonPage() {
         getPokemons.map((pokemon, index) => {
           return (
             <Link
+              style={{
+                textDecoration: 'none',
+                color: '#201D2A',
+                fontWeight: 500,
+              }}
               key={index}
               to={{
                 pathname: "/pokemon",
