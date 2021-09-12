@@ -28,7 +28,7 @@ function PokemonCard({ name, image, pokemonInfoObj }) {
         },
         textStyle: {
           fontSize: '1.2rem',
-          lineHeight: '20px',
+          lineHeight: '20px'
         }
       };
     return (

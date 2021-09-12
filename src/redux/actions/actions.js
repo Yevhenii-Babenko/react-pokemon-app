@@ -1,22 +1,27 @@
-/* import { pokemosApi } from '../../api/axiosApi' */
-const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=16";
+// import { pokemosApi } from '../../api/axiosApi';
+const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=8";
 
-export const getAllPokemons = () => (dispatch) => {
-  fetch(baseUrl)
-    .then((responce) => responce.json())
-    .then((pokemons) => {
-      pokemons.results.forEach((pokemon) => {
-        let url = pokemon.url;
-        fetch(url)
-          .then((responce) => responce.json())
-          .then((pokeData) => {
-            dispatch({
-              type: "GET_ALL_POKEMONS",
-              payload: pokeData,
-            });
-          });
-      });
-    });
+export const getAllPokemons = () => async (dispatch) => {
+  try {
+    const response = await fetch(baseUrl)
+    const data = await response.json();
+    console.log('data from async/await fetch: ', data)
+    data.results.forEach((poremon) => console.log(poremon.url))
+    try {
+      data.results.forEach(async (poremon) => {
+        const response = await fetch(poremon.url);
+        const data = await response.json();
+        dispatch({
+          type: "GET_ALL_POKEMONS",
+          payload: data,
+        })
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const fetchPokeDataById = (id) => (dispatch) => {
